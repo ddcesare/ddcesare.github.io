@@ -405,10 +405,19 @@ window['_fs_org'] = 'WZl';
 <script>
   var signup = new ThreeScale.Signup("https://multitenant-admin.preview01.3scale.net");
 
-  signup.getLayout('#signup_container', function(form){
+  signup.render('#signup_container', function(form){
     form.addClass("theClass"); // add classes
     form.find("input.create").css({"background":"green"}); //add specific inline styles
     form.parent().append("<style>body {background: transparent!important}"); //append styles
+
+    form.on("formSubmitionError", function(event){
+      console.log("error", event);
+    });
+
+    form.on("formSubmitionSuccess", function(event){
+      console.log("success!", event);
+    });
+
   });
 </script>
 
