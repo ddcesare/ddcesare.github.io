@@ -400,24 +400,28 @@ window['_fs_org'] = 'WZl';
  }
 </style>
 
-<script src="//multitenant-admin.preview01.3scale.net/assets/provider/signup_v2.js"></script>
+<script src="//multitenant-admin.preview02.3scale.net/assets/provider/signup_v2.js"></script>
 
 <script>
-  var signup = new ThreeScale.Signup("https://multitenant-admin.preview01.3scale.net");
+  var signup = new ThreeScale.Signup("https://multitenant-admin.preview02.3scale.net");
 
-  signup.render('#signup_container', function(form){
-    form.addClass("theClass"); // add classes
-    form.find("input.create").css({"background":"green"}); //add specific inline styles
-    form.parent().append("<style>body {background: transparent!important}"); //append styles
+  signup.renderTo('#signup_container');
 
-    form.on("formSubmitionError", function(event){
-      console.log("error", event);
-    });
+  signup.on('ready', function(event, form){  console.log('ready') });
+  signup.on('show', function(event, iframe){  console.log('show') });
 
-    form.on("formSubmitionSuccess", function(event){
-      console.log("success!", event);
-    });
+  signup.on('render', function(event, form){
+    ThreeScale.Signup.$(form).addClass("theClass"); // add classes
+    ThreeScale.Signup.jQuery(form).find("input.create").css({"background":"green"}); //add specific inline styles
+    ThreeScale.Signup.$(form).parent().append("<style>body {background: transparent!important}"); //append styles
+  });
 
+  signup.on('success', function(response){
+    console.log('success')
+  });
+
+  signup.on('error', function(){
+    console.log('error')
   });
 </script>
 
