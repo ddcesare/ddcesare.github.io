@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<!-- BEGIN html -->
+<!--[if IE 7]> <html class="ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]> <html class="ie8 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 9]> <html class="ie9 oldie" lang="en-US"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="en-US"> <!--<![endif]-->
+
+<!-- BEGIN head -->
+<head>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+<!-- END head -->
+</head>
+
+<!-- BEGIN body -->
+<body class="">
+
+<div id="signup-container"></div>
+
+<!--- New Signup Snippet ---->
+
+<style>
+  body {
+    width:100%;
+    height: 100%;
+  }
+ #signup-container {
+  height: 800px;
+  width: 100%;
+ }
+ #signup-container iframe {
+   height: 800px;
+   width: 100%;
+   margin: 0 auto;
+ }
+</style>
+
+<!--<iframe src="//multitenant-admin.3scale.net.dev:3000/p/signup?origin=website-trial"></iframe>-->
+
+<script src="//multitenant-admin.preview01.3scale.net/assets/provider/signup_v2.js"></script>
+
+<script>
+  var signup = new ThreeScale.Signup({
+    fields: ["account[extra_fields][my_custom]"],
+    server: "http://multitenant-admin.preview01.3scale.net",
+    signup_origin: "github"
+  });
+
+  // signup.on('load', function(){ debugger; });
+  signup.on('show', function(event, iframe){
+    $(iframe)
+            .css({border: '0'})
+        .parent().height('100%');
+    });
+  // signup.on('render', function (){ debugger; });
+  // signup.on('ready', function (){ debugger; });
+
+  signup.renderTo('#signup-container');
+</script>
+
+<!---- ----------------- ---->
+
+
+
+</body>
+<!--END html-->
+</html>
