@@ -48,7 +48,8 @@
   var signup = new ThreeScale.Signup({
     fields: ["account[extra_fields][my_custom]"],
     server: "https://multitenant-admin.preview01.3scale.net",
-    signup_origin: "github"
+    signup_origin: "github",
+    origin: "http://ddcesare.github.io/"
   });
 
   // signup.on('load', function(){ debugger; });
